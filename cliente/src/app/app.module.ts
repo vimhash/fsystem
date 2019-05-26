@@ -9,12 +9,14 @@ import { DeudasComponent } from './deudas/deudas.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ServiciosService } from '../app/service/servicios.service';
 import { FormsModule } from '@angular/forms';
+import { DetalleDeudasComponent } from './detalle-deudas/detalle-deudas.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    DeudasComponent
+    DeudasComponent,
+    DetalleDeudasComponent
   ],
   imports: [
     BrowserModule,

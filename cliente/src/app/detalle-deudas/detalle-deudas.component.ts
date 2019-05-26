@@ -2,28 +2,33 @@ import { Component, OnInit } from '@angular/core';
 
 import { ServiciosService } from '../service/servicios.service';
 import { Persona } from '../models/persona';
+import { Deudas } from '../models/deudas';
 
 @Component({
-  selector: 'app-deudas',
-  templateUrl: './deudas.component.html',
-  styleUrls: ['./deudas.component.css']
+  selector: 'app-detalle-deudas',
+  templateUrl: './detalle-deudas.component.html',
+  styleUrls: ['./detalle-deudas.component.css']
 })
-export class DeudasComponent implements OnInit {
+export class DetalleDeudasComponent implements OnInit {
 
   pers: Persona;
-  data: Array<Persona>;
+  deud: Deudas;
+  dataPers: Array<Persona>;
+  dataDeud: Array<Deudas>;
+
 
   constructor(private Servicios: ServiciosService) { }
 
   ngOnInit() {
-    this.get();
+    this.getPers();
     this.pers = new Persona();
   }
 
-  get() {
+  getPers() {
     this.Servicios.get('pers').subscribe(
         response => {
-          this.data = response as Array<Persona>;
+          this.dataPers = response as Array<Persona>;
+          console.log(this.dataPers);
         },
         error => {
             console.log(error);
@@ -31,15 +36,4 @@ export class DeudasComponent implements OnInit {
     );
   }
 
-  post(){
-    this.Servicios.post('pers',this.pers).subscribe(
-      response => {
-        this.get();
-      },
-      error => {
-        console.log(error);
-      }    
-    );
-  }
-  
 }
